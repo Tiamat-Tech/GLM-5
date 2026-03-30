@@ -112,15 +112,17 @@ Then follow that skill's own `SKILL.md` for exact setup steps.
 
 ---
 
-## API Key Setup (shared across most skills)
+## API Key Setup (required by most downstream skills)
 
-Most GLM skills use:
+Most GLM skills require the environment variable `ZHIPU_API_KEY`. This master skill itself does **not** read or use the key, but downstream skills will.
 
-- `ZHIPU_API_KEY`
+> **Security best practices:**
+> - Create a **limited-scope** API key with only the permissions needed for the skills you plan to use.
+> - Store the key in environment variables only — **never hardcode** it in source files or commit it to version control.
+> - Add `ZHIPU_API_KEY` to your `.gitignore` if storing it in a `.env` file.
+> - Rotate the key periodically and revoke unused keys at https://bigmodel.cn/usercenter/proj-mgmt/apikeys.
 
-Get API key:
-
-- https://bigmodel.cn/usercenter/proj-mgmt/apikeys
+Get API key: https://bigmodel.cn/usercenter/proj-mgmt/apikeys
 
 Set in shell:
 
@@ -128,7 +130,7 @@ Set in shell:
 export ZHIPU_API_KEY="your_key"
 ```
 
-或者写入你的环境配置文件（如 `~/.zshrc`）以长期生效。
+或者写入环境配置文件（如 `~/.zshrc`）以长期生效，但请确保该文件不会被提交到版本控制系统。
 
 ---
 
