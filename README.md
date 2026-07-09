@@ -67,9 +67,9 @@ On [Vending Bench 2](https://andonlabs.com/evals/vending-bench-2), a benchmark t
 | GLM-5       | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-5)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-5)             | 744B-A40B  | BF16      |
 | GLM-5-FP8   | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-5-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-5-FP8)     | 744B-A40B  | FP8       |
 
-## Serve GLM-5 Series Locally
+## Serve GLM-5 Series Models Locally
 
-GLM-5.2 supports deployment with the following frameworks. Feel free to try them out:
+The GLM-5 series supports deployment with the following frameworks. Feel free to try them out:
 
 - [SGLang](https://github.com/sgl-project/sglang) (v0.5.13.post1+) — see [cookbook](https://cookbook.sglang.io/autoregressive/GLM/GLM-5.2)
 - [vLLM](https://github.com/vllm-project/vllm) (v0.23.0+) — see [recipes](https://recipes.vllm.ai/zai-org/GLM-5.2)
@@ -79,6 +79,13 @@ GLM-5.2 supports deployment with the following frameworks. Feel free to try them
 - For deployment on the `Ascend NPU` platform, inference frameworks such as vLLM-Ascend, xLLM and SGLang are supported — see [here](example/ascend.md).
 
 GLM-5 supports controlling the thinking budget through the `reasoning_effort` parameter, which accepts two levels: `max` and `high`. **`max` is the default** — if `reasoning_effort` is left unset (or set to any value other than `high`), the model runs at `Max`. To use the `High` level, you must explicitly pass `reasoning_effort="high"`. For default scenarios such as benchmark/leaderboard reproduction, keep `Max` (no setting required); only set `reasoning_effort="high"` when you specifically want the `High` level. Thinking can be turned off entirely by setting `enable_thinking=false`.
+
+## Fine-tuning GLM-5 Series Models
+
+The GLM-5 series supports fine-tuning with the following frameworks. Feel free to try them out:
+
+- [Slime](https://github.com/THUDM/slime) (v0.3.0+), the reinforcement learning framework used by the GLM team.
+- [ms-swift](https://github.com/modelscope/ms-swift) (v4.4.0+), supporting SFT, PPO, and GRPO.
 
 ## Citation
 
